@@ -197,7 +197,7 @@ st.title("LSTM Nerual Net Visualisation")
 import os
 
 # Get the list of all files and directories
-path = "C:/Users/alexp/OneDrive/Desktop/Machine_Learning/NeuralNets/SavedModels2"
+path = "./SavedModels2/"
 dir_list = os.listdir(path)
 selectors = tuple(dir_list)
 
