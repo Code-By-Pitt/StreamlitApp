@@ -199,7 +199,7 @@ import os
 
 add_selectbox = st.sidebar.selectbox(
     "How would you like to be contacted?",
-    ("Select a Model", "Create new Model","Conversions_Model_10_7_7_Adam")
+    ("Select a Model", "Create new Model","Conversions_Model_10_7_7_Adam","Conversions_Model_10_7_2_RMSprop","Conversions_Model_100_7_7_RMSprop","Conversions_Model_10_7_7_RMSprop","Conversions_Model_50_7_2_Adam")
 )
 
 uploaded_file = st.file_uploader("Choose a file")
@@ -259,7 +259,7 @@ if st.button('Click Me'):
     model.fit(trainX,trainY, epochs=100,validation_data=(testX,testY),verbose=1,batch_size=2,callbacks=[early_stopping])
     makeFuturePredictions(model,n_future2,trainX2,testDates,scaler,df,raw_df,7,cols,targetcol,d,backdate)
   elif (add_selectbox != "Select a Model" or add_selectbox != "Create new Model"):
-    model = load_model("Conversions_Model_10_7_7_Adam")
+    model = load_model(add_selectbox)
     train_dates = pd.to_datetime(df['Day'])
     cols = ['Conversions','Clicks','Impr.','Cost','Conv. value','Store Visits','Store Revenue','dayName','Quarter2','year'] 
     raw_df_scaled,scaler,raw_df = cleanModelData(df,cols)
