@@ -257,7 +257,7 @@ if st.button('Click Me'):
     model = create_BD_LSTM_model(trainX,trainY,optimizer='Adam')
     early_stopping = callbacks.EarlyStopping(monitor='val_loss',patience=10)
     model.fit(trainX,trainY, epochs=100,validation_data=(testX,testY),verbose=1,batch_size=2,callbacks=[early_stopping])
-    makeFuturePredictions(model,n_future2,trainX2,testDates,scaler,df,raw_df,7,cols,targetcol,d,backdate)
+    makeFuturePredictions(model,n_future2,trainX2,train_dates,scaler,df,raw_df,7,cols,targetcol,d,backdate)
   elif (add_selectbox != "Select a Model" or add_selectbox != "Create new Model"):
     model = load_model(add_selectbox)
     train_dates = pd.to_datetime(df['Day'])
@@ -266,7 +266,7 @@ if st.button('Click Me'):
     train, test, trainDates, testDates = trinTestSplit(raw_df_scaled,train_dates)
     trainX,trainY, testX,testY = trainTestWindowGenerator(train, test,window,n_future,cols,targetcol)
     trainX2,trainY2 = WindowGenerator(raw_df_scaled,window,n_future,cols,targetcol)
-    makeFuturePredictions(model,n_future2,trainX2,testDates,scaler,df,raw_df,7,cols,targetcol,d,backdate)
+    makeFuturePredictions(model,n_future2,trainX2,train_dates,scaler,df,raw_df,7,cols,targetcol,d,backdate)
   else:
     pass
 else:
